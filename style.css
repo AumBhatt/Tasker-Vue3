@@ -1,0 +1,73 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#todo-app {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.todo-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    user-select: none;
+
+    padding: 1em;
+
+    background: orange;
+}
+
+.singleTodo {
+    position: relative;
+    width: 90%;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    margin: 0.25rem;
+
+    text-align: left;
+    font-size: x-large;
+}
+
+.todo-content {
+    width: 85%;
+
+    padding-left: 0.25em;
+
+    font-family: inherit;
+}
+
+.delete-todo-btn {
+    position: absolute;
+    right: 0;
+    padding-left: 1em;
+}
+
+.todoDone {
+    background: #00ffaa;
+}
+
+.new-todo-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+
+    font-size: large;
+
+    background: red;
+}
