@@ -50,4 +50,13 @@ todoApp.component('todo-component', {
     }
 });
 
+todoApp.component('app-footer', {
+    template:
+        `
+            <footer>
+                AumBhatt&copy; 2021
+            </footer>
+        `
+});
+
 todoApp.mount('#todo-app');
