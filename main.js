@@ -4,10 +4,14 @@ const test_list = [
     { id: 2, todoContent: "Task 3", todoStatus: false }
 ];
 
+
+
 const todoApp = Vue.createApp({
     data() {
         return {
-            todoList: [],
+            todoList: (
+                ( storedList = localStorage.getItem('tasker-app-data') ) ? JSON.parse(storedList).tasks : new Array()
+            ),
             todoID: -1,
             newTodoText: ""
         }
@@ -16,9 +20,10 @@ const todoApp = Vue.createApp({
         addNewTodo() {
             if(this.newTodoText) {
                 this.todoList.push(
-                    { id: this.todoList.length, todoContent: this.newTodoText, todoStatus: false}
+                    { id: this.todoList.length, todoContent: this.newTodoText, todoStatus: false }
                 );
                 this.newTodoText = "";
+                updateList(this.todoList);
             }
         },
     }
@@ -33,7 +38,7 @@ todoApp.component('todo-component', {
             >
                 <span
                     class="material-icons"
-                    @click="todo.todoStatus = !todo.todoStatus;"
+                    @click="toggleTodoStatus"
                 >
                     {{ todo.todoStatus?'check_box':'check_box_outline_blank' }}
                 </span>
@@ -48,6 +53,11 @@ todoApp.component('todo-component', {
                 if(el.id !== this.todo.id)
                     return el;
             });
+            updateList(this.$parent.todoList);
+        },
+        toggleTodoStatus() {
+            this.todo.todoStatus = !this.todo.todoStatus;
+            updateList(this.$parent.todoList)
         }
     }
 });
@@ -62,3 +72,8 @@ todoApp.component('app-footer', {
 });
 
 todoApp.mount('#todo-app');
+
+function updateList(list) {
+    localStorage.setItem('tasker-app-data', JSON.stringify({tasks: list}));
+    // console.log(localStorage.getItem('tasker-app-data'));
+}
