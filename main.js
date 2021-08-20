@@ -1,28 +1,26 @@
+const test_list = [
+    { id: 0, todoContent: "Task 1", todoStatus: false },
+    { id: 1, todoContent: "Task 2", todoStatus: true },
+    { id: 2, todoContent: "Task 3", todoStatus: false }
+];
+
 const todoApp = Vue.createApp({
     data() {
         return {
-            todoList: [
-                { id: 0, todoContent: "Task 1", todoStatus: false },
-                { id: 1, todoContent: "Task 2", todoStatus: true },
-                { id: 2, todoContent: "Task 3", todoStatus: false }
-            ],
+            todoList: [],
             todoID: -1,
             newTodoText: ""
         }
     },
     methods: {
         addNewTodo() {
-            this.todoList.push(
-                { id: this.todoList.length -1, todoContent: this.newTodoText, todoStatus: false}
-            );
-            this.newTodoText = "";
+            if(this.newTodoText) {
+                this.todoList.push(
+                    { id: this.todoList.length, todoContent: this.newTodoText, todoStatus: false}
+                );
+                this.newTodoText = "";
+            }
         },
-        deleteTodo() {
-            this.todoList = this.todoList.filter(el => {
-                if(el.id !== this.todoID)
-                    return el;
-            });
-        }
     }
 });
 
@@ -45,7 +43,11 @@ todoApp.component('todo-component', {
         `,
     methods: {
         deleteTodo() {
-            this.$emit('click');
+            // console.log(`Removing: ${this.todo.todoContent}`);
+            this.$parent.todoList = this.$parent.todoList.filter(el => {
+                if(el.id !== this.todo.id)
+                    return el;
+            });
         }
     }
 });

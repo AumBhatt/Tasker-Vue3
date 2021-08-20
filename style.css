@@ -1,3 +1,6 @@
+*:focus {
+    outline: none;
+}
 
 body {
     display: flex;
@@ -10,10 +13,6 @@ body {
     background: #000;
     color: white;
 
-}
-
-*:focus {
-    outline: none;
 }
 
 .banner {
@@ -87,19 +86,16 @@ body {
 }
 
 .todo-content {
-
     padding-left: 0.25em;
-
+    font-size: large;
     font-family: inherit;
 }
 
-
-
 .delete-todo-btn {
-    width: 1em;
-    height: 1em;
     position: absolute;
     right: 0.5em;
+    width: 1em;
+    height: 1em;
 
     display: flex;
     align-items: center;
@@ -152,26 +148,34 @@ body {
 
 .new-todo-wrapper > input {
     width: 75%;
-
     border: 2px solid rgba(255, 255, 255, 0.75);
 
     font-family: 'Source Code Pro', monospace;
 
     background: none;
     color: white;
-
 }
-
+.new-todo-wrapper > input:focus {
+    border-color: rgba(253, 203, 110,1.0);
+}
 .new-todo-wrapper > input::placeholder {
     color: rgba(255, 255, 255, 0.75);
     opacity: 1; /* Firefox */
-  }
-
+}
 .new-todo-wrapper > button {
     border-radius: 15%;
-
     background: rgba(253, 203, 110,1.0);
+}
 
+.empty-list-msg {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0.4;
+    text-align: center;
 }
 
 footer {
