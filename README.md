@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=500 src="assets/README_banner.svg" />
+  <img width=500 src="assets/README_banner1.svg" />
 </p>
 
 ###### <p align="right"><a href="https://github.com/AumBhatt"><i>~Aum Bhatt</i></a></p>
