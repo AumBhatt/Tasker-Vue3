@@ -5,7 +5,6 @@ const test_list = [
 ];
 
 
-
 const todoApp = Vue.createApp({
     data() {
         return {
@@ -26,6 +25,10 @@ const todoApp = Vue.createApp({
                 updateList(this.todoList);
             }
         },
+        checkForAdd(ev) {
+            if(ev.key === "Enter")
+                this.addNewTodo();
+        }
     }
 });
 
@@ -72,6 +75,12 @@ todoApp.component('app-footer', {
 });
 
 todoApp.mount('#todo-app');
+
+
+document.addEventListener('keypress', (ev) => {
+    if(ev.key === "\\")
+        document.getElementById('newTodoInput').focus();
+});
 
 function updateList(list) {
     localStorage.setItem('tasker-app-data', JSON.stringify({tasks: list}));

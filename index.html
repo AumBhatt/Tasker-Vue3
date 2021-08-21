@@ -24,19 +24,26 @@
             <todo-component
                 v-for="todo in todoList"
                 :todo="todo"
+                :key="todo.id"
             ></todo-component>
         </div>
         <div class="empty-list-msg" v-show="todoList.length === 0">Hurray! No tasks to do...</div>
         <div class="new-todo-wrapper">
-            <input type="text" v-model="newTodoText" placeholder="Enter new todo here....">
+            <input 
+                type="text" 
+                id="newTodoInput"
+                v-model="newTodoText"
+                @keypress="checkForAdd"
+                placeholder="Enter new todo....[\]"
+            >
             <button
                 id="addTodoBtn"
                 @click="addNewTodo"
             >
                 <span class="material-icons">add</span>
             </button>
+            <app-footer></app-footer>
         </div>
-        <app-footer></app-footer>
     </div>
 
 </body>
